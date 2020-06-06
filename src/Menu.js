@@ -1,31 +1,56 @@
 import React from 'react'
-import {View, Text} from 'react-native'
-import {NavigationContainer} from '@react-navigation/native'
-import {createStackNavigator} from '@react-navigation/stack'
+import {View, Text, Button} from 'react-native'
+import {NavigationContainer, DrawerActions} from '@react-navigation/native'
+import {
+    createDrawerNavigator,
+    DrawerContentScrollView,
+    DrawerItemList,
+    DrawerItem
+    } from '@react-navigation/drawer'
 
 import Simples from './componentes/Simples'
 import ParImpar from './componentes/ParImpar'
 import {Inverter, MegaSena} from './componentes/Mult'
-import Padrao from './estilo/Padrao'
+import { exp } from 'react-native-reanimated'
 
-function HomeScreen(){
+function CustomDrawerContent(props){
     return(
-        <View style ={Padrao.container}>
-            <Text style ={Padrao.ex}>Home</Text>
-        </View>
+        <DrawerContentScrollView {...props}>
+            <DrawerItemList {...props}/>
+            <DrawerItem
+                label = 'Fechar Menu'
+                onPress = {() => props.navigation.dispatch(DrawerActions.closeDrawer())}
+            />
+        </DrawerContentScrollView>
     )
 }
 
-const Stack = createStackNavigator();
+const Drawer = createDrawerNavigator()
 
-function Menu(){
-    return(
+function MeuDrawer() {
+    return (
+        <Drawer.Navigator drawerContent = {props => <CustomDrawerContent {...props} />}>
+            <Drawer.Screen name = 'Mega Semana'>
+                {props => <MegaSena numeros = {6} />}
+            </Drawer.Screen>
+            <Drawer.Screen name= 'Inveter Nome'>
+                {props => <Inverter texto = 'Paulo' />}
+            </Drawer.Screen>
+            <Drawer.Screen name = 'ParOuImpar'>
+                {props => <ParImpar numeros = {30} />}
+            </Drawer.Screen>
+            <Drawer.Screen name = 'Simples'>     
+                {props => <Simples texto = 'Flexível'/>}
+            </Drawer.Screen>
+        </Drawer.Navigator>
+    )
+}
+
+
+export default function Menu(){
+    return (
         <NavigationContainer>
-            <Stack.Navigator>
-                <Stack.Screen name = "Home" component={HomeScreen}/>
-            </Stack.Navigator>
+            <MeuDrawer />
         </NavigationContainer>
     )
 }
-
-export default Menu
