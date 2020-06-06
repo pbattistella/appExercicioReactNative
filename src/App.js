@@ -25,9 +25,9 @@ export default function(){
     <View style = {styles.container}>
             <Text style = {styles.f40}>Meu App</Text>
             <Simples texto = 'Flexível'/>
-            <ParImpar numero = {32}/>
-            <Inverter texto = 'Paulo' />
-            <MegaSena numeros = {7}/>
+            <ParImpar numero = {31}/>
+            <Inverter texto = 'ana' />
+            <MegaSena numeros = {6}/>
 
         </View>
   )

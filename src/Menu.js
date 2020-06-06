@@ -1,25 +1,31 @@
 import React from 'react'
-import {createDrawerNavigator} from 'react-navigation'
+import {View, Text} from 'react-native'
+import {NavigationContainer} from '@react-navigation/native'
+import {createStackNavigator} from '@react-navigation/stack'
 
 import Simples from './componentes/Simples'
 import ParImpar from './componentes/ParImpar'
 import {Inverter, MegaSena} from './componentes/Mult'
+import Padrao from './estilo/Padrao'
 
-export default createDrawerNavigator({
-    /*MegaSena: {
-        screen: () => <MegaSena numeros={8} />,
-        navigationOptions: {title: 'Mega Sena'}
-    } ,
-    Inverter: {
-        screen: () => <Inverter texto = 'Paulo' />,
-        navigationOptions: {title: 'Inverter Meu Texto'}
-    },
-    ParImpar: {
-        screen: () => <ParImpar numero = {30} />,
-        navigationOptions: {title: 'Par & Impar'}
-    },*/
-    Simples: {
-        screen: () => <Simples texto = 'Flexível'/>,
-        navigationOptions : {title : 'Simples'}
-    } 
-}, {drawerWidth: 300})
+function HomeScreen(){
+    return(
+        <View style ={Padrao.container}>
+            <Text style ={Padrao.ex}>Home</Text>
+        </View>
+    )
+}
+
+const Stack = createStackNavigator();
+
+function Menu(){
+    return(
+        <NavigationContainer>
+            <Stack.Navigator>
+                <Stack.Screen name = "Home" component={HomeScreen}/>
+            </Stack.Navigator>
+        </NavigationContainer>
+    )
+}
+
+export default Menu

@@ -9,5 +9,10 @@ export default StyleSheet.create({
         borderColor: '#1159cf',
         fontSize: 24,
         fontWeight: 'bold',
+    },
+    container:{
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center'  
     }
 })
