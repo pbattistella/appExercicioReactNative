@@ -11,7 +11,7 @@ import {
 import Simples from './componentes/Simples'
 import ParImpar from './componentes/ParImpar'
 import {Inverter, MegaSena} from './componentes/Mult'
-import { exp } from 'react-native-reanimated'
+import Contador from './componentes/Contatdor'
 
 function CustomDrawerContent(props){
     return(
@@ -30,10 +30,13 @@ const Drawer = createDrawerNavigator()
 function MeuDrawer() {
     return (
         <Drawer.Navigator drawerContent = {props => <CustomDrawerContent {...props} />}>
+            <Drawer.Screen name = 'Contador'>
+                    {props => <Contador />}
+            </Drawer.Screen>
             <Drawer.Screen name = 'Mega Semana'>
                 {props => <MegaSena numeros = {6} />}
             </Drawer.Screen>
-            <Drawer.Screen name= 'Inveter Nome'>
+            <Drawer.Screen name = 'Inveter Nome'>
                 {props => <Inverter texto = 'Paulo' />}
             </Drawer.Screen>
             <Drawer.Screen name = 'ParOuImpar'>
