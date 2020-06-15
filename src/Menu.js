@@ -12,6 +12,9 @@ import Simples from './componentes/Simples'
 import ParImpar from './componentes/ParImpar'
 import {Inverter, MegaSena} from './componentes/Mult'
 import Contador from './componentes/Contatdor'
+import Plataformas from './componentes/Plataformas'
+import ValidarProps from './componentes/ValidarProps'
+import Evento from './componentes/Evento'
 
 function CustomDrawerContent(props){
     return(
@@ -30,6 +33,15 @@ const Drawer = createDrawerNavigator()
 function MeuDrawer() {
     return (
         <Drawer.Navigator drawerContent = {props => <CustomDrawerContent {...props} />}>
+            <Drawer.Screen name = 'Evento'>
+                {props => <Evento/>}
+            </Drawer.Screen>
+            <Drawer.Screen name = 'Validar Props'>
+                {props => <ValidarProps ano={18} label = 'Novo ano: '/>}
+            </Drawer.Screen>
+            <Drawer.Screen name = 'Plataformas'>
+                    {props => <Plataformas/>}       
+            </Drawer.Screen>
             <Drawer.Screen name = 'Contador'>
                     {props => <Contador />}
             </Drawer.Screen>
