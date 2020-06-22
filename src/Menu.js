@@ -15,6 +15,8 @@ import Contador from './componentes/Contatdor'
 import Plataformas from './componentes/Plataformas'
 import ValidarProps from './componentes/ValidarProps'
 import Evento from './componentes/Evento'
+import {Avo} from './componentes/ComunicacaoDireta'
+import ListaFlex from './componentes/ListaFlex'
 
 function CustomDrawerContent(props){
     return(
@@ -33,6 +35,12 @@ const Drawer = createDrawerNavigator()
 function MeuDrawer() {
     return (
         <Drawer.Navigator drawerContent = {props => <CustomDrawerContent {...props} />}>
+            <Drawer.Screen name = 'Lista Alunos'>
+                {props => <ListaFlex />}
+            </Drawer.Screen>
+            <Drawer.Screen name = 'Comunicação classes'>
+                {props => <Avo nome ='Alceu' sobrenome = 'Battistella'/> }  
+            </Drawer.Screen>
             <Drawer.Screen name = 'Evento'>
                 {props => <Evento/>}
             </Drawer.Screen>
